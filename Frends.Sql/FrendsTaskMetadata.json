@@ -1,0 +1,16 @@
+﻿{
+  "Tasks": [
+      {
+        "TaskMethod": "Frends.Sql.Sql.ExecuteQuery"
+      },
+      {
+        "TaskMethod": "Frends.Sql.Sql.ExecuteProcedure"
+      },
+      {
+        "TaskMethod": "Frends.Sql.Sql.BulkInsert"
+      },
+      {
+      "TaskMethod": "Frends.Sql.Sql.BatchOperation"
+      }
+    ]
+}
