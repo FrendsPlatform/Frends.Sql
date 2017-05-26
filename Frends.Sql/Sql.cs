@@ -151,7 +151,7 @@ namespace Frends.Sql
     public class Sql
     {
         /// <summary>
-        /// Execute a sql query. Can only return one dataset per query. https://bitbucket.org/hiqfinland/frends.sql/overview#markdown-header-sqlexecutequery
+        /// Execute a sql query. Can only return one dataset per query. https://github.com/FrendsPlatform/Frends.Sql
         /// </summary>
         /// <param name="input">Input parameters</param>
         /// <param name="options">Optional parameters with default values</param>
@@ -162,7 +162,7 @@ namespace Frends.Sql
         }
 
         /// <summary>
-        /// Execute a stored procedure. Can only return one dataset per execution. https://bitbucket.org/hiqfinland/frends.sql/overview#markdown-header-sqlexecuteprocedure
+        /// Execute a stored procedure. Can only return one dataset per execution. https://github.com/FrendsPlatform/Frends.Sql
         /// </summary>
         /// <param name="input">Input parameters</param>
         /// <param name="options">Optional parameters with default values</param>
@@ -173,7 +173,7 @@ namespace Frends.Sql
         }
 
         /// <summary>
-        /// Create a query for a batch operation like insert. The query is executed with Dapper ExecuteAsync. https://bitbucket.org/hiqfinland/frends.sql/overview#markdown-header-sqlbatchoperation
+        /// Create a query for a batch operation like insert. The query is executed with Dapper ExecuteAsync. https://github.com/FrendsPlatform/Frends.Sql
         /// </summary>
         /// <param name="input">Input parameters</param>
         /// <param name="options">Optional parameters with default values</param>
@@ -218,7 +218,7 @@ namespace Frends.Sql
         }
 
         /// <summary>
-        /// Bulk insert json data to a SQL table. https://bitbucket.org/hiqfinland/frends.sql/overview#markdown-header-sqlbulkinsert
+        /// Bulk insert json data to a SQL table. https://github.com/FrendsPlatform/Frends.Sql
         /// </summary>
         /// <param name="input">Input parameters</param>
         /// <param name="options">Optional parameters with default values</param>
