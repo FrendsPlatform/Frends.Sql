@@ -1,4 +1,4 @@
- [Frends.Sql](#frends.sql)
+ - [Frends.Sql](#frends.sql)
    - [Installing](#installing)
    - [Building](#building)
    - [Contributing](#contributing)
