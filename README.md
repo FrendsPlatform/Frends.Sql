@@ -1,9 +1,72 @@
-[TOC]
+ [Frends.Sql](#frends.sql)
+   - [Installing](#installing)
+   - [Building](#building)
+   - [Contributing](#contributing)
+   - [Documentation](#documentation)
+     - [Sql.ExecuteQuery](#sql.executequery)
+       - [Input](#input)
+       - [Options](#options)
+       - [Result](#result)
+     - [Sql.ExecuteProcedure](#sql.executeprocedure)
+       - [Input](#input)
+       - [Options](#options)
+       - [Result](#result)
+     - [Sql.BulkInsert](#sql.bulkinsert)
+       - [Input](#input)
+       - [Options](#options)
+       - [Result](#result)
+     - [Sql.BatchOperation](#sql.batchoperation)
+       - [Input](#input)
+       - [Options](#options)
+       - [Result](#result)
+       - [Example usage](#example-usage)
+   - [License](#license)
 
-# Task documentation #
+# Frends.Sql
+FRENDS SQL Tasks.
 
-## Sql.ExecuteQuery ##
-### Input ###
+## Installing
+You can install the task via FRENDS UI Task view or you can find the nuget package from the following nuget feed
+`https://www.myget.org/F/frends/api/v2`
+
+## Building
+Ensure that you have `https://www.myget.org/F/frends/api/v2` added to your nuget feeds
+
+Clone a copy of the repo
+
+`git clone https://github.com/FrendsPlatform/Frends.Sql.git`
+
+Restore dependencies
+
+`nuget restore frends.sql`
+
+Rebuild the project
+
+To run the tests you will need an SQL server. You can set the database connection string in test project [app.config](Frends.Sql.Tests/App.config) file
+
+Run Tests with nunit3. Tests can be found under
+
+`Frends.Sql.Tests\bin\Release\Frends.Sql.Tests.dll`
+
+Create a nuget package
+
+`nuget pack nuspec/Frends.Sql.nuspec`
+
+## Contributing
+When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
+
+1. Fork the repo on GitHub
+2. Clone the project to your own machine
+3. Commit changes to your own branch
+4. Push your work back up to your fork
+5. Submit a Pull request so that we can review your changes
+
+NOTE: Be sure to merge the latest from "upstream" before making a pull request!
+
+## Documentation
+
+### Sql.ExecuteQuery
+#### Input 
 | Property          | Type                              | Description                                             | Example                                   |
 |-------------------|-----------------------------------|---------------------------------------------------------|-------------------------------------------|
 | Query             | string                            | The query that will be executed to the database.        | `select Name,Age from MyTable where AGE = @Age` 
@@ -11,18 +74,17 @@
 | Connection String | string                            | Connection String to be used to connect to the database.| `Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;`
 
 
-### Options ###
+#### Options
 | Property               | Type                 | Description                                                |
 |------------------------|----------------------|------------------------------------------------------------|
 | Command Timeout        | int                  | Timeout in seconds to be used for the query. 60 seconds by default. |
 | Sql Transaction Isolation Level | SqlTransationIsolationLevel | Transactions specify an isolation level that defines the degree to which one transaction must be isolated from resource or data modifications made by other transactions. Possible values are: Default, None, Serializable, ReadUncommitted, ReadCommitted, RepeatableRead, Snapshot. Additional documentation https://msdn.microsoft.com/en-us/library/ms378149(v=sql.110).aspx |
 
-### Result ###
-The result of the task will always be of type json Array.
+#### Result
+JToken. JObject[]
 
 Example result
 ```
-#!json
 [ 
  {
   "Name": "Foo",
@@ -35,32 +97,30 @@ Example result
 ]
 ```
 ```
-#!text
 The second name 'Adam' can be now be accessed by #result[1].Name in the process parameter editor.
 
 ```
 
 
-## Sql.ExecuteProcedure ##
-### Input ###
+### Sql.ExecuteProcedure
+#### Input
 | Property          | Type                              | Description                                             | Example                                   |
 |-------------------|-----------------------------------|---------------------------------------------------------|-------------------------------------------|
 | Execute           | string                            | The stored procedure that will be executed.             | `SpGetResultsByAge @Age` 
 | Parameters        | Array{Name: string, Value: string} | A array of parameters to be appended to the query.     | `Name = Age, Value = 42`
 | Connection String | string                            | Connection String to be used to connect to the database.| `Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;`
 
-### Options ###
+#### Options
 | Property               | Type                 | Description                                                |
 |------------------------|----------------------|------------------------------------------------------------|
 | Command Timeout        | int                  | Timeout in seconds to be used for the query. 60 seconds by default. |
 | Sql Transaction Isolation Level | SqlTransationIsolationLevel | Transactions specify an isolation level that defines the degree to which one transaction must be isolated from resource or data modifications made by other transactions. Possible values are: Default, None, Serializable, ReadUncommitted, ReadCommitted, RepeatableRead, Snapshot. Additional documentation https://msdn.microsoft.com/en-us/library/ms378149(v=sql.110).aspx |
 
-### Result ###
-The result of the task will always be of type json Array.
+#### Result
+JToken. JObject[]
 
 Example result
 ```
-#!json
 [ 
  {
   "Name": "Foo",
@@ -73,13 +133,12 @@ Example result
 ]
 ```
 ```
-#!text
 The second name 'Adam' can be now be accessed by #result[1].Name in the process parameter editor.
 
 ```
 
-## Sql.BulkInsert ##
-### Input ###
+### Sql.BulkInsert
+#### Input
 | Property          | Type   | Description                                                                                                                                                                                                                                      | Example                                                                            |
 |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
 | Input Data        | string | The data that will be inserted into the database. The data is a json string formated as Json Array of objects. All object property names need to match with the destination table column names.                                                  | `[{"Column1": "One", "Column2": 10},{"Column1": "Two", "Column2": 20}]`         |
@@ -87,7 +146,7 @@ The second name 'Adam' can be now be accessed by #result[1].Name in the process 
 | Connection String | string | Connection String to be used to connect to the database.                                                                                                                                                                                         | Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword; |
 
  
-### Options ###
+#### Options
 | Property                         | Type                        | Description                                                                                                                                                                                                                                                                                                                                                       |
 |----------------------------------|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Command Timeout Seconds          | int                         | Timeout in seconds to be used for the query. Default is 60 seconds,                                                                                                                                                                                                                                                                                               |
@@ -96,11 +155,11 @@ The second name 'Adam' can be now be accessed by #result[1].Name in the process 
 | Sql Transaction Isolation Level  | SqlTransationIsolationLevel | Transactions specify an isolation level that defines the degree to which one transaction must be isolated from resource or data modifications made by other transactions. Possible values are: Default, None, Serializable, ReadUncommitted, ReadCommitted, RepeatableRead, Snapshot. Additional documentation https://msdn.microsoft.com/en-us/library/ms378149(v=sql.110).aspx |
 | Convert Empty PropertyValues To Null | bool                    | If the input properties have empty values i.e. "", the values will be converted to null if this parameter is set to true.                                                                                                                                                                                                                                                     |
 
-### Result ###
+#### Result
 Integer - Number of copied rows
 
-## Sql.BatchOperation ##
-### Input ###
+### Sql.BatchOperation
+#### Input
 | Property          | Type                              | Description                                             | Example                                   |
 |-------------------|-----------------------------------|---------------------------------------------------------|-------------------------------------------|
 | Query             | string                            | The query that will be executed to the database.        | `insert into MyTable(ID,NAME) VALUES (@Id, @FirstName)` 
@@ -108,14 +167,18 @@ Integer - Number of copied rows
 | Connection String | string                            | Connection String to be used to connect to the database.| `Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;`
 
 
-### Options ###
+#### Options
 | Property               | Type                 | Description                                                |
 |------------------------|----------------------|------------------------------------------------------------|
 | Command Timeout Seconds       | int                  | Timeout in seconds to be used for the query. 60 seconds by default. |
 | Sql Transaction Isolation Level | SqlTransationIsolationLevel | Transactions specify an isolation level that defines the degree to which one transaction must be isolated from resource or data modifications made by other transactions. Possible values are: Default, None, Serializable, ReadUncommitted, ReadCommitted, RepeatableRead, Snapshot. Additional documentation https://msdn.microsoft.com/en-us/library/ms378149(v=sql.110).aspx | 
 
-### Result ###
+#### Result
 Integer - Number of affected rows
 
-###Example usage###
-![BatchOperationExample.png](https://bitbucket.org/repo/qKzXjx/images/1917332460-BatchOperationExample.png)
+#### Example usage
+![BatchOperationExample.png](https://cloud.githubusercontent.com/assets/6636662/26483905/3bb0d73c-41f8-11e7-95c9-fe554898f97f.png)
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details
