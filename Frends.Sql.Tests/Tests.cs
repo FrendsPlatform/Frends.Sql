@@ -112,7 +112,7 @@ namespace Frends.Sql.Tests
             };
             await AddDataToTable(dataToQuery);
 
-            var result =
+            var result = (JArray)
                 await
                     Sql.ExecuteQuery(
                         new InputQuery()
@@ -130,7 +130,7 @@ namespace Frends.Sql.Tests
         [TestCase(false)]
         public async Task TestSimpleInsertQueryWithParameters(bool useTransaction)
         {
-            var result =
+            var result = (JArray)
                 await
                     Sql.ExecuteQuery(
                         new InputQuery()
@@ -172,7 +172,7 @@ namespace Frends.Sql.Tests
         public async Task TestStoredProcedureThatInsertsRow(bool useTransaction)
         {
 
-            var result =
+            var result = (JArray)
                await
                    Sql.ExecuteProcedure(
                        new InputProcedure()
@@ -267,7 +267,7 @@ namespace Frends.Sql.Tests
 
         private async Task<JToken> GetAllResults()
         {
-           return await
+            return (JArray) await  
                    Sql.ExecuteQuery(
                        new InputQuery()
                        {
