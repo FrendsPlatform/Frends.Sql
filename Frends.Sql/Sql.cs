@@ -156,7 +156,7 @@ namespace Frends.Sql
         /// <param name="input">Input parameters</param>
         /// <param name="options">Optional parameters with default values</param>
         /// <returns>JToken</returns>
-        public static async Task<JToken> ExecuteQuery([CustomDisplay(DisplayOption.Tab)]InputQuery input, [CustomDisplay(DisplayOption.Tab)]Options options, CancellationToken cancellationToken)
+        public static async Task<object> ExecuteQuery([CustomDisplay(DisplayOption.Tab)]InputQuery input, [CustomDisplay(DisplayOption.Tab)]Options options, CancellationToken cancellationToken)
         {
             return await GetSqlCommandResult(input.Query, input.ConnectionString, input.Parameters, options, SqlCommandType.Text, cancellationToken).ConfigureAwait(false);
         }
@@ -167,7 +167,7 @@ namespace Frends.Sql
         /// <param name="input">Input parameters</param>
         /// <param name="options">Optional parameters with default values</param>
         /// <returns>JToken</returns>
-        public static async Task<JToken> ExecuteProcedure([CustomDisplay(DisplayOption.Tab)]InputProcedure input, [CustomDisplay(DisplayOption.Tab)]Options options, CancellationToken cancellationToken)
+        public static async Task<object> ExecuteProcedure([CustomDisplay(DisplayOption.Tab)]InputProcedure input, [CustomDisplay(DisplayOption.Tab)]Options options, CancellationToken cancellationToken)
         {
             return await GetSqlCommandResult(input.Execute, input.ConnectionString, input.Parameters, options, SqlCommandType.StoredProcedure, cancellationToken).ConfigureAwait(false);
         }
