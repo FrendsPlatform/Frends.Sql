@@ -3,23 +3,10 @@
    - [Building](#building)
    - [Contributing](#contributing)
    - [Documentation](#documentation)
-     - [Sql.ExecuteQuery](#sql.executequery)
-       - [Input](#input)
-       - [Options](#options)
-       - [Result](#result)
-     - [Sql.ExecuteProcedure](#sql.executeprocedure)
-       - [Input](#input)
-       - [Options](#options)
-       - [Result](#result)
-     - [Sql.BulkInsert](#sql.bulkinsert)
-       - [Input](#input)
-       - [Options](#options)
-       - [Result](#result)
-     - [Sql.BatchOperation](#sql.batchoperation)
-       - [Input](#input)
-       - [Options](#options)
-       - [Result](#result)
-       - [Example usage](#example-usage)
+     - [Sql.ExecuteQuery](#sqlexecutequery) 
+     - [Sql.ExecuteProcedure](#sqlexecuteprocedure) 
+     - [Sql.BulkInsert](#sqlbulkinsert)
+     - [Sql.BatchOperation](#sqlbatchoperation) 
    - [License](#license)
 
 # Frends.Sql
@@ -30,8 +17,6 @@ You can install the task via FRENDS UI Task view or you can find the nuget packa
 `https://www.myget.org/F/frends/api/v2`
 
 ## Building
-Ensure that you have `https://www.myget.org/F/frends/api/v2` added to your nuget feeds
-
 Clone a copy of the repo
 
 `git clone https://github.com/FrendsPlatform/Frends.Sql.git`
