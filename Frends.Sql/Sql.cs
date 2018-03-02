@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.SqlClient;
 using System.Dynamic;
@@ -8,7 +9,6 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
-using Frends.Tasks.Attributes;
 using Newtonsoft.Json.Linq;
 using Dapper;
 using Newtonsoft.Json;
@@ -31,14 +31,14 @@ namespace Frends.Sql
         /// <summary>
         /// Query string for batch operation.
         /// </summary>
-        [DefaultDisplayType(DisplayType.Sql)]
+        [DisplayFormat(DataFormatString = "Sql")]
         [DefaultValue("insert into MyTable(ID,NAME) VALUES (@Id, @FirstName)")]
         public string Query { get; set; }
 
         /// <summary>
         /// Input json for batch operation. Needs to be a Json array.
         /// </summary>
-        [DefaultDisplayType(DisplayType.Json)]
+        [DisplayFormat(DataFormatString = "Json")]
         [DefaultValue("[{\"Id\":15,\"FirstName\":\"Foo\"},{\"Id\":20,\"FirstName\":\"Bar\"}]")]
         public string InputJson { get; set; }
 
@@ -72,7 +72,7 @@ namespace Frends.Sql
         /// <summary>
         /// Query text.
         /// </summary>
-        [DefaultDisplayType(DisplayType.Sql)]
+        [DisplayFormat(DataFormatString = "Sql")]
         public string Query { get; set; }
         /// <summary>
         /// Parameters for query.
@@ -106,7 +106,7 @@ namespace Frends.Sql
         /// <summary>
         /// Json Array of objects. All object property names need to match with the destination table column names.
         /// </summary>
-        [DefaultDisplayType(DisplayType.Json)]
+        [DisplayFormat(DataFormatString = "Json")]
         [DefaultValue("[{\"Column1\":\"Value1\", \"Column2\":15},{\"Column1\":\"Value2\", \"Column2\":30}]")]
         public string InputData { get; set; }
 
@@ -156,7 +156,7 @@ namespace Frends.Sql
         /// <param name="input">Input parameters</param>
         /// <param name="options">Optional parameters with default values</param>
         /// <returns>JToken</returns>
-        public static async Task<object> ExecuteQuery([CustomDisplay(DisplayOption.Tab)]InputQuery input, [CustomDisplay(DisplayOption.Tab)]Options options, CancellationToken cancellationToken)
+        public static async Task<object> ExecuteQuery([PropertyTab]InputQuery input, [PropertyTab]Options options, CancellationToken cancellationToken)
         {
             return await GetSqlCommandResult(input.Query, input.ConnectionString, input.Parameters, options, SqlCommandType.Text, cancellationToken).ConfigureAwait(false);
         }
@@ -167,7 +167,7 @@ namespace Frends.Sql
         /// <param name="input">Input parameters</param>
         /// <param name="options">Optional parameters with default values</param>
         /// <returns>JToken</returns>
-        public static async Task<object> ExecuteProcedure([CustomDisplay(DisplayOption.Tab)]InputProcedure input, [CustomDisplay(DisplayOption.Tab)]Options options, CancellationToken cancellationToken)
+        public static async Task<object> ExecuteProcedure([PropertyTab]InputProcedure input, [PropertyTab]Options options, CancellationToken cancellationToken)
         {
             return await GetSqlCommandResult(input.Execute, input.ConnectionString, input.Parameters, options, SqlCommandType.StoredProcedure, cancellationToken).ConfigureAwait(false);
         }
@@ -178,7 +178,7 @@ namespace Frends.Sql
         /// <param name="input">Input parameters</param>
         /// <param name="options">Optional parameters with default values</param>
         /// <returns>Number of affected rows</returns>
-        public static async Task<int> BatchOperation([CustomDisplay(DisplayOption.Tab)]InputBatchOperation input, [CustomDisplay(DisplayOption.Tab)]Options options, CancellationToken cancellationToken)
+        public static async Task<int> BatchOperation([PropertyTab]InputBatchOperation input, [PropertyTab]Options options, CancellationToken cancellationToken)
         {
             using (var sqlConnection = new SqlConnection(input.ConnectionString))
             {
@@ -223,7 +223,7 @@ namespace Frends.Sql
         /// <param name="input">Input parameters</param>
         /// <param name="options">Optional parameters with default values</param>
         /// <returns>Copied row count</returns>
-        public static async Task<int> BulkInsert([CustomDisplay(DisplayOption.Tab)]BulkInsertInput input, [CustomDisplay(DisplayOption.Tab)]BulkInsertOptions options, CancellationToken cancellationToken)
+        public static async Task<int> BulkInsert([PropertyTab]BulkInsertInput input, [PropertyTab]BulkInsertOptions options, CancellationToken cancellationToken)
         {
             var inputJson = "{\"Table\" : " + input.InputData + " }";
             var dataset = JsonConvert.DeserializeObject<DataSet>(inputJson);
