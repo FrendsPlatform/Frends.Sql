@@ -22,19 +22,20 @@ Clone a copy of the repo
 
 Restore dependencies
 
-`nuget restore frends.sql`
+`dotnet restore`
 
 Rebuild the project
 
-To run the tests you will need an SQL server. You can set the database connection string in test project [app.config](Frends.Sql.Tests/App.config) file
+`dotnet build`
 
-Run Tests with nunit3. Tests can be found under
+Run Tests
+To run the tests you will need an SQL server. You can set the database connection string in test project [appsettings.json](Frends.Sql.Tests/appsettings.json) file
 
-`Frends.Sql.Tests\bin\Release\Frends.Sql.Tests.dll`
+`dotnet test Frends.Sql.Tests`
 
 Create a nuget package
 
-`nuget pack nuspec/Frends.Sql.nuspec`
+`dotnet pack Frends.Sql`
 
 ## Contributing
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.

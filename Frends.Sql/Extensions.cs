@@ -32,7 +32,7 @@ namespace Frends.Sql
             FieldInfo rowsCopiedField = null;
             rowsCopiedField = typeof(SqlBulkCopy).GetField(rowsCopiedFieldName,
                 BindingFlags.NonPublic | BindingFlags.GetField | BindingFlags.Instance);
-            return rowsCopiedField != null ? (int) rowsCopiedField.GetValue(bulkCopy) : 0;
+            return rowsCopiedField != null ? (int)rowsCopiedField.GetValue(bulkCopy) : 0;
         }
 
         public static void SetEmptyDataRowsToNull(this DataSet dataSet)
