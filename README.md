@@ -91,7 +91,7 @@ The second name 'Adam' can be now be accessed by #result[1].Name in the process 
 #### Input
 | Property          | Type                              | Description                                             | Example                                   |
 |-------------------|-----------------------------------|---------------------------------------------------------|-------------------------------------------|
-| Execute           | string                            | The stored procedure that will be executed.             | `SpGetResultsByAge @Age` 
+| Execute           | string                            | The stored procedure that will be executed.             | `SpGetResultsByAge` 
 | Parameters        | Array{Name: string, Value: string} | A array of parameters to be appended to the query.     | `Name = Age, Value = 42`
 | Connection String | string                            | Connection String to be used to connect to the database.| `Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;`
 
