@@ -91,7 +91,7 @@ The second name 'Adam' can be now be accessed by #result[1].Name in the process 
 #### Input
 | Property          | Type                              | Description                                             | Example                                   |
 |-------------------|-----------------------------------|---------------------------------------------------------|-------------------------------------------|
-| Execute           | string                            | The stored procedure that will be executed.             | `SpGetResultsByAge @Age` 
+| Execute           | string                            | The stored procedure that will be executed.             | `SpGetResultsByAge` 
 | Parameters        | Array{Name: string, Value: string} | A array of parameters to be appended to the query.     | `Name = Age, Value = 42`
 | Connection String | string                            | Connection String to be used to connect to the database.| `Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;`
 
@@ -126,7 +126,7 @@ The second name 'Adam' can be now be accessed by #result[1].Name in the process 
 #### Input
 | Property          | Type   | Description                                                                                                                                                                                                                                      | Example                                                                            |
 |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| Input Data        | string | The data that will be inserted into the database. The data is a json string formated as Json Array of objects. All object property names need to match with the destination table column names.                                                  | `[{"Column1": "One", "Column2": 10},{"Column1": "Two", "Column2": 20}]`         |
+| Input Data        | string | The data that will be inserted into the database. The data is a json string formated as Json Array of objects. The data has to have the same number of columns in the same order as the destination table.                                                   | `[{"Column1": "One", "Column2": 10},{"Column1": "Two", "Column2": 20}]`         |
 | Table Name        | string | Destination table name.                                                                                                                                                                                                                          | MyTable                                                                            |
 | Connection String | string | Connection String to be used to connect to the database.                                                                                                                                                                                         | Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword; |
 
