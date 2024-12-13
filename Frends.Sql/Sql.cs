@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Dynamic;
 using System.IO;
 using System.Threading;
@@ -223,7 +223,7 @@ namespace Frends.Sql
         /// <param name="input">Input parameters</param>
         /// <param name="options">Optional parameters with default values</param>
         /// <returns>Copied row count</returns>
-        public static async Task<int> BulkInsert([PropertyTab]BulkInsertInput input, [PropertyTab]BulkInsertOptions options, CancellationToken cancellationToken)
+        public static async Task<long> BulkInsert([PropertyTab]BulkInsertInput input, [PropertyTab]BulkInsertOptions options, CancellationToken cancellationToken)
         {
             var inputJson = "{\"Table\" : " + input.InputData + " }";
             var dataset = JsonConvert.DeserializeObject<DataSet>(inputJson);
@@ -262,7 +262,7 @@ namespace Frends.Sql
                 {
 
 
-                    int rowsCopyCount;
+                    long rowsCopyCount;
                     using (var sqlBulkCopy = new SqlBulkCopy(connection, flagEnum, transaction))
                     {
                         sqlBulkCopy.BulkCopyTimeout = options.CommandTimeoutSeconds;

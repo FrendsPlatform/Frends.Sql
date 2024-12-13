@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
 #pragma warning disable 1591
@@ -26,13 +26,12 @@ namespace Frends.Sql
 
         //Get inserted row count with reflection
         //http://stackoverflow.com/a/12271001
-        internal static int RowsCopiedCount(this SqlBulkCopy bulkCopy)
+        internal static long RowsCopiedCount(this SqlBulkCopy bulkCopy)
         {
             const string rowsCopiedFieldName = "_rowsCopied";
-            FieldInfo rowsCopiedField = null;
-            rowsCopiedField = typeof(SqlBulkCopy).GetField(rowsCopiedFieldName,
+            FieldInfo rowsCopiedField = typeof(SqlBulkCopy).GetField(rowsCopiedFieldName,
                 BindingFlags.NonPublic | BindingFlags.GetField | BindingFlags.Instance);
-            return rowsCopiedField != null ? (int)rowsCopiedField.GetValue(bulkCopy) : 0;
+            return rowsCopiedField != null ? (long)rowsCopiedField.GetValue(bulkCopy) : 0;
         }
 
         public static void SetEmptyDataRowsToNull(this DataSet dataSet)
