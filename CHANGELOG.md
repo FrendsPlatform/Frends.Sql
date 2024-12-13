@@ -4,5 +4,5 @@
 
 - Drop usage of System.Data.SqlClient in favor of Microsoft.Data.SqlClient
 - Bump target framework from net451 to net462
-- Server certificate parameter in connection string is required now
+- Self signed certificates are not accepted by default anymore
 - BulkInsert operation returns now long instead of int

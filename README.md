@@ -164,11 +164,11 @@ Long integer - Number of copied rows
 
 #### Input
 
-| Property          | Type   | Description                                                                             | Example                                                                              |
-| ----------------- | ------ | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| Query             | string | The query that will be executed to the database.                                        | `insert into MyTable(ID,NAME) VALUES (@Id, @FirstName)`                              |
-| Input Json        | string | A Json Array of objects that has their properties mapped to the parameters in the Query | `[{"Id":10, "FirstName": "Foo"},{"Id":15, "FirstName": "Bar"}]`                      |
-| Connection String | string | Connection String to be used to connect to the database.                                | `Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;` |
+| Property          | Type   | Description                                                                             | Example                                                                                                          |
+| ----------------- | ------ | --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Query             | string | The query that will be executed to the database.                                        | `insert into MyTable(ID,NAME) VALUES (@Id, @FirstName)`                                                          |
+| Input Json        | string | A Json Array of objects that has their properties mapped to the parameters in the Query | `[{"Id":10, "FirstName": "Foo"},{"Id":15, "FirstName": "Bar"}]`                                                  |
+| Connection String | string | Connection String to be used to connect to the database.                                | `TrustServerCertificate=True;Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;` |
 
 #### Options
 

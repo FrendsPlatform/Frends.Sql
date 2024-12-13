@@ -46,7 +46,7 @@ namespace Frends.Sql
         /// Connection string
         /// </summary>
         [PasswordPropertyText]
-        [DefaultValue("\"TrustServerCertificate=True;Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;\"")]
+        [DefaultValue("\"Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;\"")]
         public string ConnectionString { get; set; }
     }
 
@@ -63,7 +63,7 @@ namespace Frends.Sql
         public Parameter[] Parameters { get; set; }
 
         [PasswordPropertyText]
-        [DefaultValue("\"TrustServerCertificate=True;Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;\"")]
+        [DefaultValue("\"Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;\"")]
         public string ConnectionString { get; set; }
     }
 
@@ -83,7 +83,7 @@ namespace Frends.Sql
         /// Connection string
         /// </summary>
         [PasswordPropertyText]
-        [DefaultValue("\"TrustServerCertificate=True;Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;\"")]
+        [DefaultValue("\"Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;\"")]
         public string ConnectionString { get; set; }
     }
 
@@ -120,7 +120,7 @@ namespace Frends.Sql
         /// Connection string
         /// </summary>
         [PasswordPropertyText]
-        [DefaultValue("\"TrustServerCertificate=True;Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;\"")]
+        [DefaultValue("\"Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;\"")]
         public string ConnectionString { get; set; }
     }
 
