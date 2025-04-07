@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.0.1] - 2025-03-26
+## [2.1.0] - 2025-03-26
 ### Changed
 - Update packages:
   Dapper                                             1.60.1 -> 2.1.66
